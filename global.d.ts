@@ -1,4 +1,5 @@
-// global.d.ts
+
 declare global {
-  var mongo: string;
+  var mongo: { conn: any; promise: any }
 }
+export { };
