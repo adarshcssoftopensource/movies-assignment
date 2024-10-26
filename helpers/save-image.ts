@@ -1,9 +1,10 @@
 import { promises as fs } from "fs";
 import path from "path";
 
-// Helper function to save the uploaded image to the 'upload' folder
+// Helper function to save the uploaded image to a temporary directory
 export async function saveImage(file: File): Promise<string> {
-  const uploadDir = path.join(process.cwd(), "static");
+  // Use the /tmp directory for uploads
+  const uploadDir = path.join("/tmp");
 
   // Ensure the upload directory exists
   await fs.mkdir(uploadDir, { recursive: true });
@@ -18,5 +19,6 @@ export async function saveImage(file: File): Promise<string> {
   const arrayBuffer = await file.arrayBuffer();
   await fs.writeFile(filePath, Buffer.from(arrayBuffer));
 
-  return `/static/${filename}`; // Return the relative path to save in the database
+  // Return the file path (note this is temporary and should be handled accordingly)
+  return `/tmp/${filename}`; // You may want to adjust this based on your storage solution
 }
