@@ -4,12 +4,13 @@ const nextConfig = {
     domains: ["localhost"],
   },
   env: {
-    MONGODB_URI: "mongodb://localhost:27017/movies",
+    MONGODB_URI:
+      "mongodb+srv://opensourcetech47:y70FR0xm0U0jPU8Q@cluster0.8tbvk.mongodb.net/movies",
     NEXT_PUBLIC_BASE_URL: "http://localhost:3000",
   },
-  eslint:{
+  eslint: {
     ignoreDuringBuilds: true,
-  }
+  },
 };
 
 export default nextConfig;
