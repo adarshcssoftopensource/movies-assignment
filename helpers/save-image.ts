@@ -18,5 +18,5 @@ export async function saveImage(file: File): Promise<string> {
   const arrayBuffer = await file.arrayBuffer();
   await fs.writeFile(filePath, Buffer.from(arrayBuffer));
 
-  return `/uploads/${filename}`; // Return the relative path to save in the database
+  return `/tmp/${filename}`; // Return the relative path to save in the database
 }
