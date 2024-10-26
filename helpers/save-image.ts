@@ -3,7 +3,7 @@ import path from "path";
 
 // Helper function to save the uploaded image to the 'upload' folder
 export async function saveImage(file: File): Promise<string> {
-  const uploadDir = '/tmp'
+  const uploadDir = path.join(process.cwd(), 'public', 'static');
 
   // Ensure the upload directory exists
   await fs.mkdir(uploadDir, { recursive: true });
@@ -18,5 +18,5 @@ export async function saveImage(file: File): Promise<string> {
   const arrayBuffer = await file.arrayBuffer();
   await fs.writeFile(filePath, Buffer.from(arrayBuffer));
 
-  return `/tmp/${filename}`; // Return the relative path to save in the database
+  return `/static/${filename}`; // Return the relative path to save in the database
 }
