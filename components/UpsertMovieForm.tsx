@@ -21,7 +21,7 @@ import { Movie } from "@/types/movies";
 import { ACCEPTED_IMAGE_TYPES, MAX_FILE_SIZE } from "@/constant";
 
 export const moviesformSchema = z.object({
-  image: z.any(),
+  image: z.any().refine((file: any) => file?.length !== 0, 'File is required'),
 
   title: z.string().min(2, { message: "Title is required." }),
   date_of_publish: z.string().min(2, { message: "Date of pubish is required" }),
