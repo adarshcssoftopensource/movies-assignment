@@ -3,7 +3,7 @@ import path from "path";
 
 // Helper function to save the uploaded image to the 'upload' folder
 export async function saveImage(file: File): Promise<string> {
-  const uploadDir = path.join(process.cwd(), "public/uploads");
+  const uploadDir = '/tmp'
 
   // Ensure the upload directory exists
   await fs.mkdir(uploadDir, { recursive: true });
