@@ -7,6 +7,14 @@ const nextConfig = {
     MONGODB_URI: "mongodb://localhost:27017/movies",
     NEXT_PUBLIC_BASE_URL: "http://localhost:3000",
   },
+  async rewrites() {
+    return [
+      {
+        source: "/(?!api|_next|static)(.*)",
+        destination: "/",
+      },
+    ];
+  },
 };
 
 export default nextConfig;
