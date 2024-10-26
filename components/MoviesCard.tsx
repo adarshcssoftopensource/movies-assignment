@@ -22,7 +22,7 @@ export default function MoviesCard({
     <Card className="group hover:scale-105 transition-all  ease-out duration-300 hover:shadow-2xl w-full">
       <CardContent className="p-2 relative">
         <Image
-          src={`${process.env.NEXT_PUBLIC_BASE_URL}/${image}`}
+          src={`${process.env.NEXT_PUBLIC_BASE_URL}${image}`}
           alt="product-image"
           className="rounded-xl w-full h-[400px] object-cover"
           width={100}
