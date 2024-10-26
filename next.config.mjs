@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["localhost", "movies-collection-production"],
+    domains: ["localhost","movies-collection-production"],
   },
   env: {
     MONGODB_URI:
