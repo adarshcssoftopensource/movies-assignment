@@ -18,14 +18,13 @@ import ImageUpload from "./common/ImageUpload";
 import Image from "next/image";
 import { X } from "lucide-react";
 import { Movie } from "@/types/movies";
-
-// Regular expression to check for valid image file extensions
-const imageRegex = /\.(jpg|jpeg|png|gif)$/i;
+import { ACCEPTED_IMAGE_TYPES, MAX_FILE_SIZE } from "@/constant";
 
 export const moviesformSchema = z.object({
   image: z.any(),
-  title: z.string().min(1, { message: "Title is required." }),
-  date_of_publish: z.string(),
+
+  title: z.string().min(2, { message: "Title is required." }),
+  date_of_publish: z.string().min(2, { message: "Date of pubish is required" }),
 });
 
 type MoviesformSchema = z.infer<typeof moviesformSchema>;

@@ -8,13 +8,14 @@ import Each from "./common/Each";
 import EmptyList from "./EmptyList";
 import { CustomPagination } from "./Pagination";
 import LoadingCard from "./LoadingCard";
+import { ITEMS_PER_PAGE } from "@/constant";
 
 export default function MoviesCollection() {
   const [movies, setMovies] = useState<Movie[]>([]);
   const [totalMovies, setTotalMovies] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(true);
-  const limit = 2;
+  const limit = ITEMS_PER_PAGE;
 
   const fetchMovies = async (page: number) => {
     setLoading(true);
