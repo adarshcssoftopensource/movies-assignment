@@ -9,7 +9,7 @@ if (!MONGODB_URI) {
   );
 }
 
-let cached = global?.mongo;
+let cached = global.mongo;
 
 if (!cached) {
   cached = global.mongo = { conn: null, promise: null };
