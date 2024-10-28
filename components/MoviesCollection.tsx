@@ -48,7 +48,18 @@ export default function MoviesCollection() {
             title,
             date_of_publish: dateOfPublish,
           }) => {
-            return <MoviesCard {...{ id, image, title, dateOfPublish }} />;
+            return (
+              <MoviesCard
+                {...{
+                  id,
+                  image,
+                  title,
+                  dateOfPublish,
+                  setMovies,
+                  setCurrentPage,
+                }}
+              />
+            );
           }}
         />
       </section>

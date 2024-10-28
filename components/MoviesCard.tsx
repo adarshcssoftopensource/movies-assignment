@@ -1,15 +1,18 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import { Card, CardContent, CardFooter } from "./ui/card";
 import Image from "next/image";
 import Link from "next/link";
 import DeleteDialog from "./DeleteDialog";
 import { Edit } from "lucide-react";
+import { Movie } from "@/types/movies";
 
 interface MovieCard {
   id: string;
   image: string;
   title: string;
   dateOfPublish: string;
+  setMovies: Dispatch<SetStateAction<Movie[]>>;
+  setCurrentPage: Dispatch<SetStateAction<number>>;
 }
 
 export default function MoviesCard({
@@ -17,6 +20,8 @@ export default function MoviesCard({
   image,
   title,
   dateOfPublish,
+  setMovies,
+  setCurrentPage,
 }: MovieCard) {
   return (
     <Card className="group hover:scale-105 transition-all  ease-out duration-300 hover:shadow-2xl w-full">
@@ -38,7 +43,11 @@ export default function MoviesCard({
           <Link href={`/movies/${id}`}>
             <Edit size={20} className="cursor-pointer" />
           </Link>
-          <DeleteDialog id={id} />
+          <DeleteDialog
+            id={id}
+            setMovies={setMovies}
+            setCurrentPage={setCurrentPage}
+          />
         </div>
       </CardFooter>
     </Card>

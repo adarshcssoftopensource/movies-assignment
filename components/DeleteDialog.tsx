@@ -11,11 +11,21 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
+import { Movie } from "@/types/movies";
 import { Trash } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { Dispatch, SetStateAction } from "react";
 import { toast } from "sonner";
 
-export default function DeleteDialog({ id }: { id: string }) {
+export default function DeleteDialog({
+  id,
+  setMovies,
+  setCurrentPage,
+}: {
+  id: string;
+  setMovies: Dispatch<SetStateAction<Movie[]>>;
+  setCurrentPage: Dispatch<SetStateAction<number>>;
+}) {
   const router = useRouter();
   async function onDelete() {
     try {
@@ -29,7 +39,10 @@ export default function DeleteDialog({ id }: { id: string }) {
 
       if (result.success) {
         toast.success(result.message);
-        router.refresh();
+        setMovies((prevMovies: Movie[]) =>
+          prevMovies.filter((movie: Movie) => movie._id !== id)
+        );
+        setCurrentPage(1);
       } else {
         toast.error(result.message);
       }
@@ -47,8 +60,8 @@ export default function DeleteDialog({ id }: { id: string }) {
         <AlertDialogHeader>
           <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
           <AlertDialogDescription>
-            This action cannot be undone. This will permanently delete your
-            account and remove your data from our servers.
+            This action cannot be undone. This will permanently delete your data
+            from our servers.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>

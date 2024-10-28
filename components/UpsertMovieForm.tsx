@@ -124,6 +124,7 @@ export default function UpsertMovieForm({ slug }: { slug: string }) {
                     alt="Uploaded"
                     className=" w-full h-full rounded-md object-cover"
                     width={100}
+                    unoptimized
                     height={100}
                   />
                   <X
